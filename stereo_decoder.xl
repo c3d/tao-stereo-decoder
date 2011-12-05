@@ -1,0 +1,18 @@
+﻿// StereoDecoder module definition
+//
+// This module allows to apply some shading effects
+//
+// Copyright 2010-2011 Taodyne
+
+module_description
+    id "7f1f04f0-1f3d-11e1-8382-022d9abde600"
+    name "StereoDecoder"
+    import_name "StereoDecoder"
+    description "A module that allows to decode some stereoscopic formats"
+    author "Taodyne SAS"
+    website "http://www.taodyne.com"
+    version "1.0"
+
+module_description "fr",
+    name "StereoDecoder"
+    description "Permet de decoder plusieurs types de formats stéréoscopiques."
