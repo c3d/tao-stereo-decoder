@@ -17,22 +17,15 @@ include(../modules.pri)
 DEFINES     += GLEW_STATIC
 
 INCLUDEPATH += $${TAOTOPSRC}/tao/include/tao/
-HEADERS = stereo_decoder.h \
-          decoder.h \
-          split_decoder.h \
 
-SOURCES = decoder.cpp $${TAOTOPSRC}/tao/include/tao/GL/glew.c \
-          split_decoder.cpp \
-          stereo_decoder.cpp
 
-TBL_SOURCES  = stereo_decoder.tbl
-
-OTHER_FILES = decoder.xl decoder.tbl traces.tbl
+OTHER_FILES = stereo_decoder.xl
 QT          += core \
                gui \
                opengl
 
 INSTALLS    += thismod_icon
+INSTALLS    -= thismod_bin
 
 LICENSE_FILES = stereo_decoder.taokey.notsigned
 include(../licenses.pri)

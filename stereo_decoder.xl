@@ -16,3 +16,37 @@ module_description
 module_description "fr",
     name "StereoDecoder"
     description "Permet de decoder plusieurs types de formats stéréoscopiques."
+
+STEREO_MODE -> "left"
+STEREO_MODE := "left"
+
+decode_stereo_mode MODE:text ->
+    STEREO_MODE := MODE
+
+decode_stereo_eye "left" ->
+    texture_transform
+        if STEREO_MODE = "hsplit" then
+            scalex 0.5
+        else
+            scaley 0.5
+
+decode_stereo_eye "right" ->
+    texture_transform
+        if STEREO_MODE = "hsplit" then
+            translatex 0.5
+            scalex 0.5
+        else
+            translatey 0.5
+            scaley 0.5
+
+decode_stereo MODE:text, w:real, h:real ->
+    decode_stereo_mode MODE
+    left_viewpoint
+        decode_stereo_eye "left"
+        rectangle 0, 0, w, h
+    right_viewpoint
+        decode_stereo_eye "right"
+        rectangle 0, 0, w, h
+
+decode_horizontal_split -> decode_stereo "hsplit", 1.0, 1.0
+decode_vertical_split -> decode_stereo "vsplit", 1.0, 1.0
