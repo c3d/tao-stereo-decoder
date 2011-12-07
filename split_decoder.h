@@ -32,7 +32,7 @@ struct SplitDecoder : Decoder
         VERTICAL = 2
     };
 
-    SplitDecoder(int format);
+    SplitDecoder(Format format);
     ~SplitDecoder();
 
     virtual void    Draw();
@@ -42,11 +42,7 @@ struct SplitDecoder : Decoder
     static void     delete_callback(void *arg);
 
  private:
-   int format;
-
-   static bool failed;
-   static QGLShaderProgram* pgm;
-   static std::map<text, GLint> uniforms;
+   Format format;
 };
 
 
