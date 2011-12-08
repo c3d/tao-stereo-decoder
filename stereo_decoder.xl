@@ -1,21 +1,25 @@
 ﻿// StereoDecoder module definition
 //
-// This module allows to apply some shading effects
+// This module allows to decode some stereoscopic formats
 //
 // Copyright 2010-2011 Taodyne
 
 module_description
     id "7f1f04f0-1f3d-11e1-8382-022d9abde600"
-    name "StereoDecoder"
+    name "Stereoscopic decoder"
     import_name "StereoDecoder"
-    description "A module that allows to decode some stereoscopic formats"
+    description "A module that allows to decode some stereoscopic formats " &
+                "and to display different things depending on the current " &
+                "viewpoint (such as: left or right eye)."
     author "Taodyne SAS"
     website "http://www.taodyne.com"
     version "1.0"
 
 module_description "fr",
-    name "StereoDecoder"
-    description "Permet de decoder plusieurs types de formats stéréoscopiques."
+    name "Décodeur stéréoscopique"
+    description "Permet de decoder plusieurs types de formats et d'afficher " &
+                "des choses différentes selon le point de vue (par exemple, " &
+                "œil gauche ou droit)."
 
 STEREO_MODE -> "LEFT"
 STEREO_MODE := "LEFT"
@@ -50,3 +54,6 @@ decode_stereo MODE:text, w:real, h:real ->
 
 decode_horizontal_split -> decode_stereo "HSPLIT", 1.0, 1.0
 decode_vertical_split -> decode_stereo "VSPLIT", 1.0, 1.0
+
+left_viewpoint X  -> stereo_viewpoints 1, X
+right_viewpoint X -> stereo_viewpoints 2, X
