@@ -103,7 +103,7 @@ text_box 0, 0, window_width, window_height,
  * phase. In other words, the code guarded by stereo_viewpoints is
  * always executed, whatever the value @p viewpoints may be. In that
  * respect, the stereo_viewpoint primitive behaves pretty much like
- * locally. It is only during the drawing phase that conditional
+ * @ref locally. It is only during the drawing phase that conditional
  * drawing occurs.
  */
 stereo_viewpoints(viewpoints:integer);
