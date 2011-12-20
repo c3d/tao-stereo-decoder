@@ -1,10 +1,9 @@
 import StereoDecoder
 import VLCAudioVideo
 
-// Video side-by-side to play
-V -> "side-by-side-video.mp4"
-
 color "white"
+V -> "side-by-side-video.mp4"
+decode_horizontal_split
 movie_texture V
 movie_set_volume V, 0.5
-decode_horizontal_split
+rectangle 0, 0, window_width, window_height

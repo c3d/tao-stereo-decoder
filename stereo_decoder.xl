@@ -13,7 +13,7 @@ module_description
                 "viewpoint (such as: left or right eye)."
     author "Taodyne SAS"
     website "http://www.taodyne.com"
-    version "1.01"
+    version "1.0"
 
 module_description "fr",
     name "Décodeur stéréoscopique"
@@ -21,60 +21,39 @@ module_description "fr",
                 "des choses différentes selon le point de vue (par exemple, " &
                 "œil gauche ou droit)."
 
-STEREO_MODE -> "HSPLIT"
-STEREO_MODE := "HSPLIT"
+STEREO_MODE -> "LEFT"
+STEREO_MODE := "LEFT"
 
 decode_stereo_mode MODE:text ->
     STEREO_MODE := MODE
 
-decode_stereo_eye "LEFT", "HSPLIT" ->
+decode_stereo_eye "LEFT" ->
     texture_transform
-        scalex 0.5
-decode_stereo_eye "RIGHT", "HSPLIT" ->
-    texture_transform
-        translatex 0.5
-        scalex 0.5
+        if STEREO_MODE = "HSPLIT" then
+            scalex 0.5
+        else
+            scaley 0.5
 
-decode_stereo_eye "RIGHT", "RHSPLIT" ->
+decode_stereo_eye "RIGHT" ->
     texture_transform
-        scalex 0.5
-decode_stereo_eye "LEFT", "RHSPLIT" ->
-    texture_transform
-        translatex 0.5
-        scalex 0.5
+        if STEREO_MODE = "HSPLIT" then
+            translatex 0.5
+            scalex 0.5
+        else
+            translatey 0.5
+            scaley 0.5
 
-decode_stereo_eye "LEFT", "VSPLIT" ->
-    texture_transform
-        scaley 0.5
-decode_stereo_eye "RIGHT", "VSPLIT" ->
-    texture_transform
-        translatey 0.5
-        scaley 0.5
-
-decode_stereo_eye "RIGHT", "RVSPLIT" ->
-    texture_transform
-        scaley 0.5
-decode_stereo_eye "LEFT", "RVSPLIT" ->
-    texture_transform
-        translatey 0.5
-        scaley 0.5
-
-decode_stereo MODE:text, w:integer, h:integer ->
+decode_stereo MODE:text, w:real, h:real ->
+    decode_stereo_mode MODE
     left_viewpoint
-        decode_stereo_eye "LEFT", MODE
+        decode_stereo_eye "LEFT"
         rectangle 0, 0, w, h
     right_viewpoint
-        decode_stereo_eye "RIGHT", MODE
+        decode_stereo_eye "RIGHT"
         rectangle 0, 0, w, h
 
-decode_horizontal_split ->
-    decode_stereo "HSPLIT", texture_width, texture_height
-decode_vertical_split ->
-    decode_stereo "VSPLIT", texture_width, texture_height
-decode_horizontal_split_reverse ->
-    decode_stereo "RHSPLIT", texture_width, texture_height
-decode_vertical_split_reverse ->
-    decode_stereo "RVSPLIT", texture_width, texture_height
+decode_horizontal_split -> decode_stereo "HSPLIT", 1.0, 1.0
+decode_vertical_split -> decode_stereo "VSPLIT", 1.0, 1.0
 
-left_viewpoint X  -> stereo_viewpoints 2#01010101, X
-right_viewpoint X -> stereo_viewpoints 2#10101010, X
+left_viewpoint X  -> stereo_viewpoints 1, X
+right_viewpoint X -> stereo_viewpoints 2, X
