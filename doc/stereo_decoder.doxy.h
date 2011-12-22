@@ -1,6 +1,5 @@
 /**
- * @defgroup StereoDecoder StereoDecoder
- * @ingroup Modules
+ * @taomoduledescription{StereoDecoder, StereoDecoder}
  *
  * Decode some stereoscopic formats.
  *
@@ -8,6 +7,7 @@
  * For instance, the following code decode a video with a side-by-side format in Tao.
  * @include stereo_decoder.ddd
  *
+ * @endtaomoduledescription{StereoDecoder}
  * @{
  */
 
