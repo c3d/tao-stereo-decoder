@@ -1,6 +1,5 @@
 /**
- * @defgroup StereoDecoder StereoDecoder
- * @ingroup Modules
+ * @taomoduledescription{StereoDecoder, StereoDecoder}
  *
  * Decode some stereoscopic formats.
  *
@@ -8,6 +7,7 @@
  * For instance, the following code decode a video with a side-by-side format in Tao.
  * @include stereo_decoder.ddd
  *
+ * @endtaomoduledescription{StereoDecoder}
  * @{
  */
 
@@ -36,7 +36,7 @@ decode_stereo_eye(eye:text);
  *
  * This function is equivalent to the following code :
  @code
- decode_stereo "HSPLIT", 1.0, 1.0
+decode_stereo "HSPLIT", texture_width / 2, texture_height
  @endcode
  */
 decode_horizontal_split();
@@ -47,7 +47,7 @@ decode_horizontal_split();
  *
  * This function is equivalent to the following code :
  @code
- decode_stereo "VSPLIT", 1.0, 1.0
+ decode_stereo "VSPLIT", texture_width, texture_height / 2
  @endcode
  */
 decode_vertical_split();
@@ -68,7 +68,7 @@ right_viewpoint
     rectangle 0, 0, w, h
 @endcode
  */
-decode_stereo(mode:text, w:real, h:real);
+decode_stereo(mode:text, w:integer, h:integer);
 
 /**
  * Draw only for the specified stereoscopic point of views.
@@ -103,7 +103,7 @@ text_box 0, 0, window_width, window_height,
  * phase. In other words, the code guarded by stereo_viewpoints is
  * always executed, whatever the value @p viewpoints may be. In that
  * respect, the stereo_viewpoint primitive behaves pretty much like
- * @ref locally. It is only during the drawing phase that conditional
+ * locally. It is only during the drawing phase that conditional
  * drawing occurs.
  */
 stereo_viewpoints(viewpoints:integer);
