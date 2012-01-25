@@ -42,9 +42,9 @@
  * Choisit le mode de décodage stéréoscopique.
  * Les valeurs possibles pour @p mode sont :
  *     - HSPLIT : partage horizontal (<em>horizontal split</em>), également
- *       appelé côte-à-côte (<em>side-by-side</em).
+ *       appelé côte-à-côte (<em>side-by-side</em>).
  *     - VSPLIT : partage vertical (<em>vertical split</em>), également
- *       appelé dessus/dessous (<em>top/bottom</em).
+ *       appelé dessus/dessous (<em>top/bottom</em>).
  */
 decode_stereo_mode(mode:text);
 
@@ -156,7 +156,7 @@ decode_stereo(mode:text, w:integer, h:integer);
  * - right_viewpoint est synonyme de <tt>stereo_viewpoints 2</tt>.
  *
  * L'exemple qui suit montre un carré à l'œil gauche et un cercle à l'œil
- * droit (ce qu ipeut être utile pour s'assurer qu'une configuration
+ * droit (ce qui peut être utile pour s'assurer qu'une configuration
  * stéréoscopique fonctionne correctement) :
  * @~
 @code
@@ -181,7 +181,7 @@ text_box 0, 0, window_width, window_height,
  * locally. It is only during the drawing phase that conditional
  * drawing occurs.
  * @~french
- * @note Cette primitive n'affecte que la phase d'affichagem pas l'exécution.
+ * @note Cette primitive n'affecte que la phase d'affichage pas l'exécution.
  * En d'autres termes, le code protégé par @ref stereo_viewpoints est toujours
  * exécuté, quelle que soit la valeur de @p viewpoints. En ce sens, la
  * primitive se comporte comme @ref locally, et c'est seulement lors de la
