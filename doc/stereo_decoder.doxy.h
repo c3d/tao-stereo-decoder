@@ -26,7 +26,8 @@
  * @include stereo_decoder.ddd
  *
  * @endtaomoduledescription{StereoDecoder}
-
+ *
+ * @~
  * @{
  */
 
