@@ -55,5 +55,5 @@ decode_stereo MODE:text, w:integer, h:integer ->
 decode_horizontal_split -> decode_stereo "HSPLIT", texture_width / 2, texture_height
 decode_vertical_split -> decode_stereo "VSPLIT", texture_width, texture_height / 2
 
-left_viewpoint X  -> stereo_viewpoints 1, X
-right_viewpoint X -> stereo_viewpoints 2, X
+left_viewpoint X  -> stereo_viewpoints 2#01010101, X
+right_viewpoint X -> stereo_viewpoints 2#10101010, X
