@@ -27,32 +27,33 @@ STEREO_MODE := "HSPLIT"
 decode_stereo_mode MODE:text ->
     STEREO_MODE := MODE
 
-decode_stereo_eye "LEFT", "HSPLIT" ->
+decode_stereo_eye "LEFT" ->
     texture_transform
-        scalex 0.5
-decode_stereo_eye "LEFT", "VSPLIT" ->
-    texture_transform
-        scaley 0.5
+        if STEREO_MODE = "HSPLIT" then
+            scalex 0.5
+        else
+            scaley 0.5
 
-decode_stereo_eye "RIGHT", "HSPLIT" ->
+decode_stereo_eye "RIGHT" ->
     texture_transform
-        translatex 0.5
-        scalex 0.5
-decode_stereo_eye "RIGHT", "VSPLIT" ->
-    texture_transform
-        translatey 0.5
-        scaley 0.5
+        if STEREO_MODE = "HSPLIT" then
+            translatex 0.5
+            scalex 0.5
+        else
+            translatey 0.5
+            scaley 0.5
 
 decode_stereo MODE:text, w:integer, h:integer ->
+    decode_stereo_mode MODE
     left_viewpoint
-        decode_stereo_eye "LEFT", MODE
+        decode_stereo_eye "LEFT"
         rectangle 0, 0, w, h
     right_viewpoint
-        decode_stereo_eye "RIGHT", MODE
+        decode_stereo_eye "RIGHT"
         rectangle 0, 0, w, h
 
-decode_horizontal_split -> decode_stereo "HSPLIT", texture_width, texture_height
-decode_vertical_split -> decode_stereo "VSPLIT", texture_width, texture_height
+decode_horizontal_split -> decode_stereo "HSPLIT", texture_width / 2, texture_height
+decode_vertical_split -> decode_stereo "VSPLIT", texture_width, texture_height / 2
 
-left_viewpoint X  -> stereo_viewpoints 2#01010101, X
-right_viewpoint X -> stereo_viewpoints 2#10101010, X
+left_viewpoint X  -> stereo_viewpoints 1, X
+right_viewpoint X -> stereo_viewpoints 2, X
