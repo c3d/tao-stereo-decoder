@@ -36,8 +36,10 @@
  * @~english
  * Choose decoding mode.
  * Choose the decoding mode among the following ones.
- *     - HSPLIT : horizontal split mode, also known as side-by-side.
- *     - VSPLIT : vertical split mode, also known as top/bottom.
+ *     - HSPLIT: horizontal split mode, also known as side-by-side.
+ *     - VSPLIT: vertical split mode, also known as top/bottom.
+ *     - RHSPLIT: reversed horizontal split (since version 1.01)
+ *     - RVSPLIT: reversed vertical split (since version 1.01)
  *
  * @~french
  * Choisit le mode de décodage stéréoscopique.
@@ -46,6 +48,8 @@
  *       appelé côte-à-côte (<em>side-by-side</em>).
  *     - VSPLIT : partage vertical (<em>vertical split</em>), également
  *       appelé dessus/dessous (<em>top/bottom</em>).
+ *     - RHSPLIT : partage horizontal inversé (à partir de la version 1.01)
+ *     - RVSPLIT : partage vertical inversé (à partir de la version 1.01)
  */
 decode_stereo_mode(mode:text);
 
@@ -96,6 +100,7 @@ decode_horizontal_split();
  @code
 decode_stereo "RHSPLIT", texture_width, texture_height
  @endcode
+ * @since 1.01
  */
 decode_horizontal_split_reverse();
 
@@ -129,8 +134,9 @@ decode_vertical_split();
  @code
  decode_stereo "RVSPLIT", texture_width, texture_height
  @endcode
+ * @since 1.01
  */
-decode_vertical_split_reversed();
+decode_vertical_split_reverse();
 
 /**
  * @~english
