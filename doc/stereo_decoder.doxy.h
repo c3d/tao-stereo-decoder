@@ -36,8 +36,10 @@
  * @~english
  * Choose decoding mode.
  * Choose the decoding mode among the following ones.
- *     - HSPLIT : horizontal split mode, also known as side-by-side.
- *     - VSPLIT : vertical split mode, also known as top/bottom.
+ *     - HSPLIT: horizontal split mode, also known as side-by-side.
+ *     - VSPLIT: vertical split mode, also known as top/bottom.
+ *     - RHSPLIT: reversed horizontal split (since version 1.01)
+ *     - RVSPLIT: reversed vertical split (since version 1.01)
  *
  * @~french
  * Choisit le mode de décodage stéréoscopique.
@@ -46,6 +48,8 @@
  *       appelé côte-à-côte (<em>side-by-side</em>).
  *     - VSPLIT : partage vertical (<em>vertical split</em>), également
  *       appelé dessus/dessous (<em>top/bottom</em>).
+ *     - RHSPLIT : partage horizontal inversé (à partir de la version 1.01)
+ *     - RVSPLIT : partage vertical inversé (à partir de la version 1.01)
  */
 decode_stereo_mode(mode:text);
 
@@ -77,10 +81,28 @@ decode_stereo_eye(eye:text);
  * Équivalent à :
  * @~
  @code
-decode_stereo "HSPLIT", texture_width / 2, texture_height
+decode_stereo "HSPLIT", texture_width, texture_height
  @endcode
  */
 decode_horizontal_split();
+
+/**
+ * @~english
+ * Decode reversed horizontal split format.
+ * Decode the horizontal split format, also known as side-by-side format.
+ * This assumes that the left and right eye are reversed.
+ *
+ * This function is equivalent to the following code:
+ * @~french
+ * Décode le format partage horizontal inversé.
+ * Équivalent à :
+ * @~
+ @code
+decode_stereo "RHSPLIT", texture_width, texture_height
+ @endcode
+ * @since 1.01
+ */
+decode_horizontal_split_reverse();
 
 /**
  * @~english
@@ -93,10 +115,28 @@ decode_horizontal_split();
  * Équivalent à :
  * @~
  @code
- decode_stereo "VSPLIT", texture_width, texture_height / 2
+ decode_stereo "VSPLIT", texture_width, texture_height
  @endcode
  */
 decode_vertical_split();
+
+/**
+ * @~english
+ * Decode reversed vertical split format.
+ * Decode the vertical split format, also known as over/under format.
+ * This assumes that left and right eye are reversed.
+ *
+ * This function is equivalent to the following code:
+ * @~french
+ * Décode le format partage vertical.
+ * Équivalent à :
+ * @~
+ @code
+ decode_stereo "RVSPLIT", texture_width, texture_height
+ @endcode
+ * @since 1.01
+ */
+decode_vertical_split_reverse();
 
 /**
  * @~english
