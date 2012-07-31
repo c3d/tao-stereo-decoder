@@ -13,7 +13,7 @@ module_description
                 "viewpoint (such as: left or right eye)."
     author "Taodyne SAS"
     website "http://www.taodyne.com"
-    version "1.01"
+    version "1.011"
 
 module_description "fr",
     name "Décodeur stéréoscopique"
