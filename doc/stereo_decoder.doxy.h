@@ -219,13 +219,13 @@ text_box 0, 0, window_width, window_height,
  * phase. In other words, the code guarded by stereo_viewpoints is
  * always executed, whatever the value @p viewpoints may be. In that
  * respect, the stereo_viewpoint primitive behaves pretty much like
- * locally. It is only during the drawing phase that conditional
+ * @p locally. It is only during the drawing phase that conditional
  * drawing occurs.
  * @~french
  * @note Cette primitive n'affecte que la phase d'affichage pas l'exécution.
  * En d'autres termes, le code protégé par @ref stereo_viewpoints est toujours
  * exécuté, quelle que soit la valeur de @p viewpoints. En ce sens, la
- * primitive se comporte comme @ref locally, et c'est seulement lors de la
+ * primitive se comporte comme @p locally, et c'est seulement lors de la
  * phase d'affichage que le tracé est conditionné au point de vue en cours
  * de tracé.
  */
