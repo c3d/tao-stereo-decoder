@@ -2,22 +2,10 @@
  * @~english
  * @taomoduledescription{StereoDecoder, StereoDecoder}
  *
- * <tt>import StereoDecoder</tt> - Decode stereoscopic and multiview formats.\n
+ * <tt>import StereoDecoder</tt> - Decode some stereoscopic formats.\n
  *
- * This module allows you to decode some stereoscopic or multiscopic
- * formats of your different medias and convert it to the current Tao
- * display.
- * It currently supports the following video or picture formats:
- *     - HSPLIT: horizontal split mode, also known as side-by-side.
- *     - VSPLIT: vertical split mode, also known as top/bottom.
- *     - RHSPLIT: reversed horizontal split (since version 1.01)
- *     - RVSPLIT: reversed vertical split (since version 1.01)
- *     - 5VIEW: 5 view videos encoded in a single stream
- *     - 8VIEW: 8 view video encoded in a single stream
- *     - 2D+Z: 2D+Z format with separate color and depth map
- *     - Declipse: 2D+Z format with two separate color and depth map * 2
- * For instance, the following code decode a video with a side-by-side
- * format in Tao.
+ * This module allows you to decode some stereoscopic formats of your different medias and convert it to the current Tao display.
+ * For instance, the following code decode a video with a side-by-side format in Tao.
  * @include stereo_decoder.ddd
  *
  * @endtaomoduledescription{StereoDecoder}
@@ -25,22 +13,11 @@
  * @~french
  * @taomoduledescription{StereoDecoder, Décodeur stéréoscopique}
  *
- * <tt>import StereoDecoder</tt> - Décode des formats stéréoscopiques et multi-vues.\n
+ * <tt>import StereoDecoder</tt> - Décode des formats stéréoscopiques.\n
  *
  * Ce module vous permet de décoder certains formats d'images ou de vidéos
  * stéréoscopiques, de manière à les afficher correctement dans
  * Tao Presentations.
- * Ce module supporte les fomats d'image ou de vidéo suivants:
- *     - HSPLIT : partage horizontal (<em>horizontal split</em>), également
- *       appelé côte-à-côte (<em>side-by-side</em>).
- *     - VSPLIT : partage vertical (<em>vertical split</em>), également
- *       appelé dessus/dessous (<em>top/bottom</em>).
- *     - RHSPLIT : partage horizontal inversé (à partir de la version 1.01)
- *     - RVSPLIT : partage vertical inversé (à partir de la version 1.01)
- *     - 5VIEW: format à 5 imqges encodées dans une trame
- *     - 8VIEW: format à 8 images encodées dans une trame
- *     - 2D+Z: format 2D+Z avec carte couleur et profondeur séparées
- *     - Declipse: format 2D+Z avec double carte de couleur et de profondeur
  * L'exemple qui suit montre comment décoder une vidéo au format côte-à-côte
  * (<em>side-by-side</em>). Le document s'affichera correctement quel que soit
  * le mode d'affichage choisi dans Tao Presentations : côte-à-côte,
@@ -53,6 +30,28 @@
  * @~
  * @{
  */
+
+
+/**
+ * @~english
+ * Choose decoding mode.
+ * Choose the decoding mode among the following ones.
+ *     - HSPLIT: horizontal split mode, also known as side-by-side.
+ *     - VSPLIT: vertical split mode, also known as top/bottom.
+ *     - RHSPLIT: reversed horizontal split (since version 1.01)
+ *     - RVSPLIT: reversed vertical split (since version 1.01)
+ *
+ * @~french
+ * Choisit le mode de décodage stéréoscopique.
+ * Les valeurs possibles pour @p mode sont :
+ *     - HSPLIT : partage horizontal (<em>horizontal split</em>), également
+ *       appelé côte-à-côte (<em>side-by-side</em>).
+ *     - VSPLIT : partage vertical (<em>vertical split</em>), également
+ *       appelé dessus/dessous (<em>top/bottom</em>).
+ *     - RHSPLIT : partage horizontal inversé (à partir de la version 1.01)
+ *     - RVSPLIT : partage vertical inversé (à partir de la version 1.01)
+ */
+decode_stereo_mode(mode:text);
 
 
 /**
