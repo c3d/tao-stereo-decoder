@@ -19,7 +19,11 @@ DEFINES     += GLEW_STATIC
 INCLUDEPATH += $${TAOTOPSRC}/tao/include/tao/
 
 
-OTHER_FILES = stereo_decoder.xl
+OTHER_FILES = stereo_decoder.xl stereo_decoder2.xl
+CRYPT_XL_SOURCES = stereo_decoder2.xl
+include(../crypt_xl.pri)
+
+
 QT          += core \
                gui \
                opengl
