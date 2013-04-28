@@ -12,10 +12,10 @@
  *     - VSPLIT: vertical split mode, also known as top/bottom.
  *     - RHSPLIT: reversed horizontal split (since version 1.01)
  *     - RVSPLIT: reversed vertical split (since version 1.01)
- *     - 5VIEW: 5 view videos encoded in a single stream
- *     - 8VIEW: 8 view video encoded in a single stream
- *     - 2D+Z: 2D+Z format with separate color and depth map
- *     - Declipse: 2D+Z format with two separate color and depth map * 2
+ *     - 5VIEW: 5 view videos encoded in a single stream (since version 1.02)
+ *     - 8VIEW: 8 view video encoded in a single stream (since version 1.02)
+ *     - 2D+Z: 2D+Z format with separate color and depth map (since version 1.02)
+ *     - Declipse: 2D+Z format with two separate color and depth map * 2 (since version 1.02)
  * For instance, the following code decode a video with a side-by-side
  * format in Tao.
  * @include stereo_decoder.ddd
@@ -37,10 +37,10 @@
  *       appelé dessus/dessous (<em>top/bottom</em>).
  *     - RHSPLIT : partage horizontal inversé (à partir de la version 1.01)
  *     - RVSPLIT : partage vertical inversé (à partir de la version 1.01)
- *     - 5VIEW: format à 5 imqges encodées dans une trame
- *     - 8VIEW: format à 8 images encodées dans une trame
- *     - 2D+Z: format 2D+Z avec carte couleur et profondeur séparées
- *     - Declipse: format 2D+Z avec double carte de couleur et de profondeur
+ *     - 5VIEW: format à 5 imqges encodées dans une trame (à partir de la version 1.02)
+ *     - 8VIEW: format à 8 images encodées dans une trame (à partir de la version 1.02)
+ *     - 2D+Z: format 2D+Z avec carte couleur et profondeur séparées (à partir de la version 1.02)
+ *     - Declipse: format 2D+Z avec double carte de couleur et de profondeur (à partir de la version 1.02)
  * L'exemple qui suit montre comment décoder une vidéo au format côte-à-côte
  * (<em>side-by-side</em>). Le document s'affichera correctement quel que soit
  * le mode d'affichage choisi dans Tao Presentations : côte-à-côte,
@@ -53,23 +53,6 @@
  * @~
  * @{
  */
-
-
-/**
- * @~english
- * Choose the eye to decode.
- * Choose which eye need to be decoded.
- *     - LEFT  : left eye.
- *     - RIGHT : right eye.
- *
- * @~french
- * Spécifie quel œil on veut décoder.
- * Les valeurs possibles pour @p eye sont :
- *     - LEFT  : l'œil gauche.
- *     - RIGHT : l'œil droit.
- */
-decode_stereo_eye(eye:text);
-
 
 /**
  * @~english
@@ -145,26 +128,12 @@ decode_vertical_split_reverse();
  * Decode the current texture with the stereoscopic @p mode and
  * redraw it with the size (@p w, @p h).
  *
- * This function is equivalent to the following code :
- *
  * @~french
  * Effectue le décodage stéréoscopique de la texture courante.
  *
  * Décode la texture courante en supposant qu'elle est encodée
  * avec le mode @p mode, et affiche la vue adaptée
  * sous forme d'un rectangle de taille (@p w, @p h).
- *
- * Équivalent à :
- * @~
-@code
-decode_stereo_mode MODE
-left_viewpoint
-    decode_stereo_eye "LEFT"
-    rectangle 0, 0, w, h
-right_viewpoint
-    decode_stereo_eye "RIGHT"
-    rectangle 0, 0, w, h
-@endcode
  */
 decode_stereo(mode:text, w:integer, h:integer);
 
