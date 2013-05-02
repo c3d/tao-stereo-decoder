@@ -1,8 +1,18 @@
-﻿// StereoDecoder module definition
-//
-// This module allows to decode some stereoscopic formats
-//
-// Copyright 2010-2011 Taodyne
+﻿// ****************************************************************************
+//  stereo_decoder.xl                                              Tao project 
+// ****************************************************************************
+// 
+//   File Description:
+// 
+//     This module makes it easy to decode common stereoscopic formats
+// 
+// 
+// 
+// 
+// ****************************************************************************
+//  This document is property of Taodyne SAS
+//  (C) 2011-2013 Taodyne SAS
+// ****************************************************************************
 
 module_description
     id "7f1f04f0-1f3d-11e1-8382-022d9abde600"
@@ -13,7 +23,7 @@ module_description
                 "viewpoint (such as: left or right eye)."
     author "Taodyne SAS"
     website "http://www.taodyne.com"
-    version "1.011"
+    version "1.02"
 
 module_description "fr",
     name "Décodeur stéréoscopique"
@@ -21,60 +31,5 @@ module_description "fr",
                 "des choses différentes selon le point de vue (par exemple, " &
                 "œil gauche ou droit)."
 
-STEREO_MODE -> "HSPLIT"
-STEREO_MODE := "HSPLIT"
 
-decode_stereo_mode MODE:text ->
-    STEREO_MODE := MODE
-
-decode_stereo_eye "LEFT", "HSPLIT" ->
-    texture_transform
-        scalex 0.5
-decode_stereo_eye "RIGHT", "HSPLIT" ->
-    texture_transform
-        translatex 0.5
-        scalex 0.5
-
-decode_stereo_eye "RIGHT", "RHSPLIT" ->
-    texture_transform
-        scalex 0.5
-decode_stereo_eye "LEFT", "RHSPLIT" ->
-    texture_transform
-        translatex 0.5
-        scalex 0.5
-
-decode_stereo_eye "LEFT", "VSPLIT" ->
-    texture_transform
-        scaley 0.5
-decode_stereo_eye "RIGHT", "VSPLIT" ->
-    texture_transform
-        translatey 0.5
-        scaley 0.5
-
-decode_stereo_eye "RIGHT", "RVSPLIT" ->
-    texture_transform
-        scaley 0.5
-decode_stereo_eye "LEFT", "RVSPLIT" ->
-    texture_transform
-        translatey 0.5
-        scaley 0.5
-
-decode_stereo MODE:text, w:integer, h:integer ->
-    left_viewpoint
-        decode_stereo_eye "LEFT", MODE
-        rectangle 0, 0, w, h
-    right_viewpoint
-        decode_stereo_eye "RIGHT", MODE
-        rectangle 0, 0, w, h
-
-decode_horizontal_split ->
-    decode_stereo "HSPLIT", texture_width, texture_height
-decode_vertical_split ->
-    decode_stereo "VSPLIT", texture_width, texture_height
-decode_horizontal_split_reverse ->
-    decode_stereo "RHSPLIT", texture_width, texture_height
-decode_vertical_split_reverse ->
-    decode_stereo "RVSPLIT", texture_width, texture_height
-
-left_viewpoint X  -> stereo_viewpoints 2#01010101, X
-right_viewpoint X -> stereo_viewpoints 2#10101010, X
+import "stereo_decoder2.xl.crypt"
