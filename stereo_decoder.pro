@@ -31,6 +31,9 @@ QT          += core \
 INSTALLS    += thismod_icon
 INSTALLS    -= thismod_bin
 
+LICENSE_FILES = stereo_decoder.taokey.notsigned
+include(../licenses.pri)
+
 QMAKE_SUBSTITUTES = doc/Doxyfile.in
 DOXYFILE = doc/Doxyfile
 DOXYLANG = en,fr
