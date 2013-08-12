@@ -1,8 +1,7 @@
 /**
  * @~english
  * @taomoduledescription{StereoDecoder, StereoDecoder}
- *
- * <tt>import StereoDecoder</tt> - Decode stereoscopic and multiview formats.\n
+ * <tt>import StereoDecoder</tt> - Decode stereoscopic and multiview formats.@n
  *
  * This module allows you to decode some stereoscopic or multiscopic
  * formats of your different medias and convert it to the current Tao
@@ -24,8 +23,7 @@
  *
  * @~french
  * @taomoduledescription{StereoDecoder, Décodeur stéréoscopique}
- *
- * <tt>import StereoDecoder</tt> - Décode des formats stéréoscopiques et multi-vues.\n
+ * <tt>import StereoDecoder</tt> - Décode des formats stéréoscopiques et multi-vues.@n
  *
  * Ce module vous permet de décoder certains formats d'images ou de vidéos
  * stéréoscopiques, de manière à les afficher correctement dans
