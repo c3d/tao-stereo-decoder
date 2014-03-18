@@ -153,6 +153,53 @@ decode_5view -> decode_stereo "5VIEW", texture_width, texture_height
 
 // ============================================================================
 // 
+//    Multiscopic 5-view mode, taking only 4 views
+// 
+// ============================================================================
+
+decode_stereo "5VIEW4", W:integer, H:integer -> 
+    stereo_viewpoints 1,
+        decode_5view_eye 0, W, H
+    stereo_viewpoints 2,
+        decode_5view_eye 1, W, H
+    stereo_viewpoints 4,
+        decode_5view_eye 2, W, H
+    stereo_viewpoints 8,
+        decode_5view_eye 3, W, H
+
+    stereo_viewpoints 16,
+        decode_5view_eye 0, W, H
+    stereo_viewpoints 32,
+        decode_5view_eye 1, W, H
+    stereo_viewpoints 64,
+        decode_5view_eye 2, W, H
+    stereo_viewpoints 128,
+        decode_5view_eye 3, W, H
+
+    stereo_viewpoints 256,
+        decode_5view_eye 0, W, H
+    stereo_viewpoints 512,
+        decode_5view_eye 1, W, H
+    stereo_viewpoints 1024,
+        decode_5view_eye 2, W, H
+    stereo_viewpoints 2048,
+        decode_5view_eye 3, W, H
+
+    stereo_viewpoints 4096,
+        decode_5view_eye 0, W, H
+    stereo_viewpoints 8192,
+        decode_5view_eye 1, W, H
+    stereo_viewpoints 16384,
+        decode_5view_eye 2, W, H
+    stereo_viewpoints 32768,
+        decode_5view_eye 3, W, H
+
+decode_5view4 -> decode_stereo "5VIEW4", texture_width, texture_height
+
+
+
+// ============================================================================
+// 
 //    Multiscopic 8-view mode
 // 
 // ============================================================================
@@ -252,6 +299,44 @@ decode_stereo "8VIEW", W:integer, H:integer ->
         decode_8view_eye 7, W, H
 
 decode_8view -> decode_stereo "8VIEW"
+
+
+decode_stereo "8VIEW6", W:integer, H:integer ->
+    stereo_viewpoints 1,
+        decode_8view_eye 0, W, H
+    stereo_viewpoints 2,
+        decode_8view_eye 0, W, H
+    stereo_viewpoints 4,
+        decode_8view_eye 1, W, H
+    stereo_viewpoints 8,
+        decode_8view_eye 2, W, H
+    stereo_viewpoints 16,
+        decode_8view_eye 3, W, H
+    stereo_viewpoints 32,
+        decode_8view_eye 4, W, H
+    stereo_viewpoints 64,
+        decode_8view_eye 5, W, H
+    stereo_viewpoints 128,
+        decode_8view_eye 5, W, H
+
+    stereo_viewpoints 256,
+        decode_8view_eye 0, W, H
+    stereo_viewpoints 512,
+        decode_8view_eye 0, W, H
+    stereo_viewpoints 1024,
+        decode_8view_eye 1, W, H
+    stereo_viewpoints 2048,
+        decode_8view_eye 2, W, H
+    stereo_viewpoints 4096,
+        decode_8view_eye 3, W, H
+    stereo_viewpoints 8192,
+        decode_8view_eye 4, W, H
+    stereo_viewpoints 16384,
+        decode_8view_eye 5, W, H
+    stereo_viewpoints 32768,
+        decode_8view_eye 5, W, H
+
+decode_8view6 -> decode_stereo "8VIEW6"
 
 
 
