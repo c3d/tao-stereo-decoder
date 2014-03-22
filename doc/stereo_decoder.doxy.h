@@ -224,5 +224,75 @@ left_viewpoint(B:block);
 right_viewpoint(B:block);
 
 /**
+ * @~english
+ * Decode a multi-stream movie
+ * Decode a movie that is encoded with multiple video streams. This format
+ * is presently supported in containers such as MP4, and requires a specific
+ * version of VLC.
+ *
+ * The @p Movie parameter specifies the URL of the movie to play.
+ * The @p LeftIndex parameter indicates the index of stream for the leftmost
+ * picture.
+ * The @p Increment parameter indicates the increment from one stream to the
+ * next.
+ * For example, if you have eight streams with stream 0 representing
+ * the leftmost picture, set @p LeftIndex to 0 and @p Increment to 1.
+ * If stream 0 represents the rightmost pictures, set @p LeftIndex to 7
+ * and @p Increment to -1.
+ *
+ * @~french
+ * Decode un film en format multi-flux
+ * Decode un film encodé dans un format multiflux. Ce format est
+ * supporté pour le moment avec certains containers comme MP4, et
+ * requiert une version spécifique de VLC.
+ *
+ * Le paramètre @p Movie indique l'URL du film à jouer.
+ * Le paramètre @p LeftIndex indique l'index du flux contenant les
+ * images les plus à gauche. Le paramètre @p Increment représente la
+ * différence d'index d'un flux au suivant.
+ * Par exemple, si vous avez 8 flux et que le flux 0 représente
+ * l'image la plus à gauche, mettez @p LeftIndex à 0 et @p Increment à 1.
+ * Au contraire, si le flux 0 est l'image la plus à droite, mettez
+ * @p LeftIndex à 7 et @p Increment à -1
+ */
+multistream_movie(Movie:text, LeftIndex:integer, Increment:integer);
+
+/**
+ * @~english
+ * Decode sequence of pictures in multview format
+ * Decode a sequence of pictures interpreted as multiple viewpoints
+ * for the same multiscopic image.
+ *
+ * The @p Picture parameter specifies the URL of the pictures. It
+ * should contain the '#' character, that will be replaced with a
+ * picture index.
+ * The @p LeftIndex parameter indicates the index of stream for the leftmost
+ * picture.
+ * The @p Increment parameter indicates the increment from one stream to the
+ * next.
+ * For example, if you have eight pictures names 'view1.png' through
+ * 'view8.png' where 'view1.png' is the rightmost picture, you should
+ * use @code multiview_image "view#.png", 8, -1 @encode.
+ *
+ * @~french
+ * Decode une sequence d'images en multiscopie
+ * Decode une séquence d'images interprétées comme les différents
+ * points de vue d'une même image multiscopique.
+ *
+ * Le paramètre @p Picture indique l'URL des images à jouer. Cette URL
+ * devrait contenir le caractère "#" qui sera remplacé par le numéro
+ * de la vue.
+ * Le paramètre @p LeftIndex indique l'index du flux contenant les
+ * images les plus à gauche. Le paramètre @p Increment représente la
+ * différence d'index d'un flux au suivant.
+ * Par exemple, si vous avez 8 images où "image1.png" est l'image la
+ * plus à droite et "image8.png" l'image la plus à droite, utilisez
+ * @code multiview_image "image#.png", 8, -1 @endcode
+ */
+multiview_image(Picture:text, LeftIndex:integer, Increment:integer);
+
+
+
+/**
 * @}
 */
