@@ -442,7 +442,8 @@ decode_5of9view -> decode_stereo "5OF9VIEW"
 // 
 // ============================================================================
 
-decode_2dplusz_view_delta -> 0.008
+decode_2dplusz_view_delta  -> 0.008
+decode_2dplusz_view_offset -> 0.008
 
 decode_stereo "2D+Z", W:integer, H:integer ->
 // ----------------------------------------------------------------------------
@@ -478,30 +479,13 @@ decode_stereo "2D+Z", W:integer, H:integer ->
             >>
 
         shader_set Zoffset := 0.5
-        stereo_viewpoints 1,
-            shader_set Zscale := 0
-            rectangle W, 2*H
-        stereo_viewpoints 2,
-            shader_set Zscale := 1 * decode_2dplusz_view_delta
-            rectangle W, 2*H
-        stereo_viewpoints 4,
-            shader_set Zscale := 2 * decode_2dplusz_view_delta
-            rectangle W, 2*H
-        stereo_viewpoints 8,
-            shader_set Zscale := 3 * decode_2dplusz_view_delta
-            rectangle W, 2*H
-        stereo_viewpoints 16,
-            shader_set Zscale := -4 * decode_2dplusz_view_delta
-            rectangle W, 2*H
-        stereo_viewpoints 32,
-            shader_set Zscale := -3 * decode_2dplusz_view_delta
-            rectangle W, 2*H
-        stereo_viewpoints 64,
-            shader_set Zscale := -2 * decode_2dplusz_view_delta
-            rectangle W, 2*H
-        stereo_viewpoints 128,
-            shader_set Zscale := -1 * decode_2dplusz_view_delta
-            rectangle W, 2*H
+        for I in 0..stereo_viewpoints-1 loop
+            decode_2dplusz_stereo_viewpoint I, W, H
+        decode_2dplusz_stereo_viewpoint N:integer, W:integer, H:integer -> 
+            stereo_viewpoints 2^N,
+                decode_2dplusz_view_offset := (N - stereo_viewpoints/2) * decode_2dplusz_view_delta
+                shader_set Zscale := decode_2dplusz_view_offset
+                rectangle W, 2*H
 
 decode_2dplusz  -> decode_stereo "2D+Z", texture_width, texture_height
 
@@ -556,30 +540,13 @@ decode_stereo "Declipse", W:integer, H:integer ->
             >>
 
         shader_set Zoffset := 0.5
-        stereo_viewpoints 1,
-            shader_set Zscale := 0
-            rectangle W, H
-        stereo_viewpoints 2,
-            shader_set Zscale := 1 * decode_2dplusz_view_delta
-            rectangle W, H
-        stereo_viewpoints 4,
-            shader_set Zscale := 2 * decode_2dplusz_view_delta
-            rectangle W, H
-        stereo_viewpoints 8,
-            shader_set Zscale := 3 * decode_2dplusz_view_delta
-            rectangle W, H
-        stereo_viewpoints 16,
-            shader_set Zscale := -4 * decode_2dplusz_view_delta
-            rectangle W, H
-        stereo_viewpoints 32,
-            shader_set Zscale := -3 * decode_2dplusz_view_delta
-            rectangle W, H
-        stereo_viewpoints 64,
-            shader_set Zscale := -2 * decode_2dplusz_view_delta
-            rectangle W, H
-        stereo_viewpoints 128,
-            shader_set Zscale := -1 * decode_2dplusz_view_delta
-            rectangle W, H
+        for I in 0..stereo_viewpoints-1 loop
+            decode_2dplusz_stereo_viewpoint I, W, H
+        decode_2dplusz_stereo_viewpoint N:integer, W:integer, H:integer -> 
+            stereo_viewpoints 2^N,
+                decode_2dplusz_view_offset := (N - stereo_viewpoints/2) * decode_2dplusz_view_delta
+                shader_set Zscale := decode_2dplusz_view_offset
+                rectangle W, 2*H
 
 decode_declipse -> decode_stereo "Declipse", texture_width, texture_height
 
