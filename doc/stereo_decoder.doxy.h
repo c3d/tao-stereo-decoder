@@ -272,7 +272,7 @@ multistream_movie(Movie:text, LeftIndex:integer, Increment:integer);
  * next.
  * For example, if you have eight pictures names 'view1.png' through
  * 'view8.png' where 'view1.png' is the rightmost picture, you should
- * use @code multiview_image "view#.png", 8, -1 @encode.
+ * use @code multiview_image "view#.png", 8, -1 @endcode.
  *
  * @~french
  * Decode une sequence d'images en multiscopie
