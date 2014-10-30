@@ -27,7 +27,7 @@
  *
  * Ce module vous permet de décoder certains formats d'images ou de vidéos
  * stéréoscopiques, de manière à les afficher correctement dans
- * Tao Presentations.
+ * Tao3D.
  * Ce module supporte les fomats d'image ou de vidéo suivants:
  *     - HSPLIT : partage horizontal (<em>horizontal split</em>), également
  *       appelé côte-à-côte (<em>side-by-side</em>).
@@ -41,7 +41,7 @@
  *     - Declipse: format 2D+Z avec double carte de couleur et de profondeur (à partir de la version 1.02)
  * L'exemple qui suit montre comment décoder une vidéo au format côte-à-côte
  * (<em>side-by-side</em>). Le document s'affichera correctement quel que soit
- * le mode d'affichage choisi dans Tao Presentations : côte-à-côte,
+ * le mode d'affichage choisi dans Tao3D : côte-à-côte,
  * dessus/dessous (<em>over/under</em>), entrelacé (<em>interleaved</em>)...
  * ou même, simplement, 2D.
  * @include stereo_decoder.ddd
