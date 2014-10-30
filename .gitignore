@@ -1,7 +1,6 @@
-/doc/Doxyfile
-/doc/html
 *.o
 *.dylib
 Makefile
 doc/Doxyfile
 doc/output
+*wrap.cpp
