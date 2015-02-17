@@ -14,8 +14,6 @@ MODINSTDIR = stereo_decoder
 
 include(../modules.pri)
 
-DEFINES     += GLEW_STATIC
-
 INCLUDEPATH += $${TAOTOPSRC}/tao/include/tao/
 
 
