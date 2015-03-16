@@ -580,13 +580,34 @@ decode_stereo Mode:text ->
     decode_stereo Mode, texture_width, texture_height
 
 decode_stereo Mode:text, W:integer, H:integer ->
-    left_viewpoint
+    decode_stereo_int viewpoints, Mode, W, H
+
+    decode_stereo_int 1, Mode:text, W:integer, H:integer ->
+        writeln "Mode=", Mode
         decode_stereo_eye "LEFT", Mode
         rectangle W, H
-    right_viewpoint
-        decode_stereo_eye "RIGHT", Mode
-        rectangle W, H
+        
+    decode_stereo_int Count:integer, Mode:text, W:integer, H:integer ->
+        sigmoid X:real -> 1/(1+exp(-5*(2*X-1)))
+        for V in 0..Count-1 loop
+            decode_stereo_at V, sigmoid(real V / (Count-1)), Mode, W, H
 
+    decode_stereo_at View:integer, Ratio:real, Mode:text, W:integer, H:integer->
+        stereo_viewpoints 2^View,
+            
+            locally
+                decode_stereo_eye "LEFT", Mode
+                show Ratio
+                rectangle W, H
+            locally
+                decode_stereo_eye "RIGHT", Mode
+                show 1-Ratio
+                rectangle W, H
+            locally
+                texture ""
+                color "red"
+                triangle W*(Ratio-0.5), -H*0.5, 100, 100
+                
 
 
 // ============================================================================
