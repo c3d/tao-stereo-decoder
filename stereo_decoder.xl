@@ -580,10 +580,9 @@ decode_stereo Mode:text ->
     decode_stereo Mode, texture_width, texture_height
 
 decode_stereo Mode:text, W:integer, H:integer ->
-    decode_stereo_int viewpoints, Mode, W, H
+    decode_stereo_int stereo_viewpoints, Mode, W, H
 
     decode_stereo_int 1, Mode:text, W:integer, H:integer ->
-        writeln "Mode=", Mode
         decode_stereo_eye "LEFT", Mode
         rectangle W, H
         
